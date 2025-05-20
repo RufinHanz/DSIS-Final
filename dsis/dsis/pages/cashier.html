@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>D.S.I.S. Cashier</title>
+  <link rel="stylesheet" href="../css/cashier.css" />
+</head>
+<body>
+  <!-- Header Section -->
+  <header>
+    <div class="container01">
+      <h1>DSIS Cashier</h1>
+      <div class="search-bar">
+        <input type="text" id="searchInput" placeholder="Search products..." />
+      </div>
+      <button id="cashier-logout-btn" class="header-btn">Logout</button>
+    </div>
+    <div class="container02">
+      <h3 style="padding: 0px 10px 0px 0px;">On Duty:</h3>
+      <input type="text" id="cashiernickname" readonly style="width: 100px; font-family: Arial;">
+    </div>
+  </header>
+
+  <!-- Main Content Section -->
+  <main class="main-content container">
+    <div class="tables-container">
+      <section class="available-products">
+        <h2>Available Products</h2>
+        <table id="productsTable">
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Product Description</th>
+              <th>Product Category</th>
+              <th>Product Stock Available</th>
+              <th>Product Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </section>
+
+      <section class="bought-products">
+        <h2>Purchased Products</h2>
+        <table id="purchasedTable">
+          <thead>
+            <tr>
+              <th>Product ID</th>
+              <th>Product Name</th>
+              <th>Product Description</th>
+              <th>Product Category</th>
+              <th>Stock/s to be Purchased</th>
+              <th>Product Price</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </section>
+
+      <section class="product-purchased-history">
+      <h2>Purchase History</h2>
+      <table id="purchaseHistoryTable">
+        <thead>
+          <tr>
+            <th>Date/Time</th>
+            <th>Products</th>
+            <th>Total Quantity</th>
+            <th>Total Amount</th>
+            <th>Amount Paid</th>
+            <th>Change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </section>
+
+    </div>
+
+    <aside class="purchase-info">
+      <label for="total-products">Total Number of Products</label>
+      <input type="number" id="total-products" readonly />
+      <label for="total-amount">Total Amount</label>
+      <input type="text" id="total-amount" readonly />
+      <label for="enter-amount">Enter Amount</label>
+      <input type="number" id="enter-amount" min="0" step="0.01" />
+      <button id="proceed-btn" type="button">Proceed Purchase</button>
+    </aside>
+  </main>
+
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content" id="modal-content">
+      <!-- Populated by JS -->
+    </div>
+  </div>
+
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="../scripts/cashier.js"></script>
+</body>
+</html>

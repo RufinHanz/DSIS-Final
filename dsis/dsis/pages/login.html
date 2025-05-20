@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>DSIS LogIn</title>
+  <link rel="stylesheet" href="../css/styles.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Login</h2>
+    <form id="login-form" novalidate>
+      <input
+        type="text"
+        id="login-username"
+        placeholder="Username (Gmail) or Nickname"
+        required
+        autocomplete="username"
+      />
+      <input
+        type="password"
+        id="login-password"
+        placeholder="Password"
+        required
+        autocomplete="current-password"
+      />
+      <button type="submit">Login</button>
+    </form>
+  </div>
+
+  <!-- Firebase v8.10.1 CDN -->
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="../scripts/login.js"></script>
+</body>
+</html>
