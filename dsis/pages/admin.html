@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>DSIS Admin</title>
+  <link rel="stylesheet" href="../css/admin.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+</head>
+<body>
+  <header>
+    <div class="container">
+      <h1>DSIS Admin</h1>
+    </div>
+    <nav class="main-nav">
+      <ul>
+        <li><a href="#dashboard" class="nav-link active">Dashboard</a></li>
+        <li><a href="#products" class="nav-link">Products</a></li>
+        <li><a href="#category" class="nav-link">Category</a></li>
+        <li><a href="#productstock" class="nav-link">Product Stock</a></li>
+        <li><a href="#purchaseHistory" class="nav-link">Purchase History</a></li>
+        <li style="float:right"><a class="nav-link" id="adminlogout">Logout</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <!-- DASHBOARD: Categories as Divs, click to show products in table -->
+    <section id="dashboard" class="section">
+      <h2>Dashboard</h2>
+      <div id="dashboardCategories" class="dashboard-categories"></div>
+      <div id="dashboardProductsTableContainer" style="display:none;">
+        <h3 id="dashboardProductsTableTitle"></h3>
+        <table id="dashboardProductsTable" class="table">
+          <thead>
+            <tr>
+              <th>Product ID</th><th>Name</th><th>Description</th><th>Stock</th><th>Price</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- PRODUCTS -->
+    <section id="products" class="section" style="display:none;">
+      <h2>Products</h2>
+      <div id="statusMessage"></div>
+      <div class="form-group">
+        <h3>Add Product</h3>
+        <input type="text" id="productname" placeholder="Product Name" />
+        <textarea id="productdescription" placeholder="Product Description"></textarea>
+        <select id="productCategorySelect"><option value="">Select Category</option></select>
+        <input type="text" id="productprice" placeholder="Price (e.g., PHP 100.00)" />
+        <button id="addProductBtn">Add Product</button>
+      </div>
+      <div class="form-group">
+        <input type="text" id="searchInput" placeholder="Search products..." />
+      </div>
+      <div class="table-responsive">
+        <h3>Product List</h3>
+        <table id="updateproduct" class="table">
+          <thead>
+            <tr>
+              <th>ID</th><th>Name</th><th>Description</th><th>Category</th><th>In Stock</th><th>Price</th><th>Actions</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- CATEGORY -->
+    <section id="category" class="section" style="display:none;">
+      <h2>Category</h2>
+      <div id="statusMessageCategory"></div>
+      <div class="form-group">
+        <h3>Add Category</h3>
+        <input type="text" id="categoryname" placeholder="Category Name" />
+        <button id="addCategoryBtn">Add Category</button>
+      </div>
+      <div class="form-group">
+        <input type="text" id="searchCategory" placeholder="Search Category..." />
+      </div>
+      <div class="table-responsive">
+        <h3>Category List</h3>
+        <table id="updatecategory" class="table">
+          <thead>
+            <tr><th>ID</th><th>Name</th><th>Actions</th></tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div id="categoryEditPopup" class="modal" style="display:none;">
+        <div class="modal-content">
+          <h3>Edit Category</h3>
+          <input type="text" id="editCategoryName" placeholder="Category Name" />
+          <button id="saveCategory">Save Changes</button>
+          <button class="close-btn">Cancel</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- PRODUCT STOCK -->
+    <section id="productstock" class="section" style="display:none;">
+      <h2>Product Stock</h2>
+      <div id="statusMessageStock"></div>
+      <div class="table-responsive">
+        <h3>Update Product Stock</h3>
+        <table id="productStockTable" class="table">
+          <thead>
+            <tr>
+              <th>Product ID</th><th>Name</th><th>Description</th><th>Current Stock</th>
+              <th>Update Stock</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="table-responsive">
+        <h3>Out of Stock Products</h3>
+        <table id="outOfStockTable" class="table">
+          <thead>
+            <tr>
+              <th>Product ID</th><th>Name</th><th>Description</th><th>Current Stock</th><th>Action</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- Edit Product Popup -->
+    <div id="productEditPopup" class="modal" style="display:none;">
+      <div class="modal-content">
+        <h3>Edit Product</h3>
+        <input type="text" id="editProductName" placeholder="Product Name" />
+        <textarea id="editProductDescription" placeholder="Product Description"></textarea>
+        <select id="editProductCategorySelect"><option value="">Select Category</option></select>
+        <input type="number" id="editProductStock" placeholder="Stock" />
+        <input type="text" id="editProductPrice" placeholder="Price (e.g., PHP 100.00)" />
+        <button id="saveEditProduct">Save Changes</button>
+        <button class="close-btn">Cancel</button>
+      </div>
+    </div>
+
+    <!-- PURCHASE HISTORY SECTION -->
+    <section id="purchaseHistory" class="section" style="display:none;">
+      <h2>Purchase History</h2>
+      <div class="table-responsive">
+        <table id="adminPurchaseHistoryTable" class="table">
+          <thead>
+            <tr>
+              <th>Date/Time</th>
+              <th>Products</th>
+              <th>Total Quantity</th>
+              <th>Total Amount</th>
+              <th>Amount Paid</th>
+              <th>Change</th>
+            </tr>
+          </thead>
+          <tbody>
+            <!-- Populated by JS -->
+          </tbody>
+        </table>
+      </div>
+    </section>
+    </div>
+  </main>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/8.10.1/firebase-firestore.js"></script>
+  <script src="../scripts/admin.js"></script>
+</body>
+</html>

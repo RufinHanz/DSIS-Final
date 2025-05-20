@@ -1,0 +1,243 @@
+body {
+    font-family: Arial, sans-serif;
+    background: #f9f9f9;
+    margin: 0;
+    padding: 0;
+  }
+  
+  header {
+    background: #2d3e50;
+    color: #fff;
+    padding: 20px 0 0 0;
+    margin-bottom: 0;
+  }
+  
+  header h1 {
+    text-align: center;
+    margin: 0 0 10px 0;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 2.2em;
+  }
+  
+  .main-nav {
+    background: #243447;
+    padding: 0;
+  }
+  
+  .main-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+  
+  .main-nav li {
+    margin: 0;
+  }
+  
+  .main-nav a {
+    display: block;
+    color: #fff;
+    text-decoration: none;
+    padding: 16px 32px;
+    font-size: 1.1em;
+    transition: background 0.2s;
+  }
+  
+  .main-nav a:hover,
+  .main-nav a.active {
+    background: #1abc9c;
+    color: #fff;
+  }
+  
+  .container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 24px;
+  }
+  
+  .section {
+    background: #fff;
+    margin: 32px auto;
+    padding: 24px 32px 32px 32px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.07);
+    max-width: 1000px;
+  }
+  
+  .form-group {
+    margin-bottom: 24px;
+  }
+  
+  .form-group input,
+  .form-group textarea,
+  .form-group select {
+    display: block;
+    width: 100%;
+    margin: 8px 0 16px 0;
+    padding: 10px 12px;
+    font-size: 1em;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+  }
+  
+  .form-group button {
+    background: #1abc9c;
+    color: #fff;
+    border: none;
+    padding: 10px 28px;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  
+  .form-group button:hover {
+    background: #159c82;
+  }
+  
+  .table-responsive {
+    overflow-x: auto;
+  }
+  
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    margin-bottom: 24px;
+  }
+  
+  .table th,
+  .table td {
+    border: 1px solid #e0e0e0;
+    padding: 12px 10px;
+    text-align: left;
+  }
+  
+  .table th {
+    background: #f5f6fa;
+    font-weight: 600;
+  }
+  
+  .table tr:nth-child(even) {
+    background: #f9f9f9;
+  }
+  
+  .table tr:hover {
+    background: #eaf6f3;
+  }
+  
+  /* DASHBOARD: 4-column grid for category boxes */
+  .dashboard-categories {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-bottom: 32px;
+  }
+  
+  .category-box {
+    background: #1abc9c;
+    color: #fff;
+    padding: 24px 18px;
+    border-radius: 10px;
+    min-height: 110px;
+    text-align: center;
+    box-shadow: 0 2px 6px rgba(44,62,80,0.08);
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: transform 0.12s, background 0.18s;
+    border: 2px solid #1abc9c;
+  }
+  .category-box:hover {
+    background: #159c82;
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 4px 14px rgba(44,62,80,0.12);
+  }
+  
+  /* Responsive dashboard grid */
+  @media (max-width: 1100px) {
+    .dashboard-categories {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+  @media (max-width: 800px) {
+    .dashboard-categories {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media (max-width: 500px) {
+    .dashboard-categories {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  #statusMessage,
+  #statusMessageCategory,
+  #statusMessageStock {
+    margin-bottom: 16px;
+    font-weight: 500;
+    color: #e74c3c;
+  }
+  
+  .modal {
+    position: fixed;
+    left: 0; top: 0;
+    width: 100vw; height: 100vh;
+    background: rgba(0,0,0,0.4);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 1000;
+  }
+  
+  .modal-content {
+    background: #fff;
+    padding: 32px 36px;
+    border-radius: 8px;
+    min-width: 320px;
+    max-width: 400px;
+    box-shadow: 0 4px 20px rgba(44,62,80,0.14);
+    text-align: center;
+  }
+  
+  .close-btn {
+    margin-top: 18px;
+    background: #e74c3c;
+    color: #fff;
+    border: none;
+    padding: 8px 22px;
+    border-radius: 4px;
+    font-size: 1em;
+    cursor: pointer;
+  }
+  
+  .close-btn:hover {
+    background: #c0392b;
+  }
+  
+  /* Make tables and sections responsive */
+  @media (max-width: 900px) {
+    .container,
+    .section {
+      padding: 12px;
+      max-width: 100vw;
+    }
+    .main-nav a {
+      padding: 12px 10px;
+      font-size: 1em;
+    }
+    .modal-content {
+      min-width: 90vw;
+      padding: 18px 8px;
+    }
+  }
+
+  #userModal input, #userModal select {
+  margin-bottom: 10px;
+  width: 100%;
+  padding: 8px;
+}
